@@ -31,17 +31,31 @@
 
 <script>
 
-  // Select all the list items on the page and convert to array
+    // Select all the list items on the page and convert to array
+    const lis = Array.from(document.querySelectorAll('li'))
 
-  // Filter for only the elements that contain the word 'Flexbox'
+    // Filter for only the elements that contain the word 'Flexbox'
+    // .filter(li => li.textContent.indexOf('Flexbox') !== -1)
+        .filter(item => item.textContent.includes('Flexbox'))
+        // map down to a list of time strings
+        // .map(el => el.getAttribute('data-time'))
+        .map(item => item.dataset.time)
+        // map to an array of seconds
+        /*.map(el => {
+            const min = Number(el.split(':')[0]) * 60;
+            const sec = Number(el.split(':')[1]);
+            return min + sec;
+        })*/
+        .map(timecode => {
+            const parts = timecode.split(':').map(part => parseFloat(part));
+            return (parts[0] * 60) + parts[1];
+        })
 
-  // map down to a list of time strings
+        // reduce to get total
+        .reduce((acc, next) => acc + next);
+    console.log(lis);
 
-  // map to an array of seconds
-
-  // reduce to get total
-
-  // 🔥 This can also be done in a single .reduce(), but we're practicing arrow functions here, so chain them!
+    // 🔥 This can also be done in a single .reduce(), but we're practicing arrow functions here, so chain them!
 
 </script>
 </body>
