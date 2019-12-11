@@ -15,14 +15,16 @@ const make = 'BMW';
 const model = 'x5';
 const colour = 'Royal Blue';
 
+/* NOT CASE INSENSITIVE */
 // .startsWith()
-
+course.startsWith('RFB'); // true
+flightNumber.startsWith('AC', 3); //true
 // .endsWith()
-
+accountNumber.endsWith('RT', 11); // true // Will include only 11 characters to string for check
+flightNumber.endsWith('jz'); // true
 // .includes()
-
+flightNumber.includes('AC'); // true
 // .repeat()
-
 function leftPad(str, length = 20) {
   return `→ ${' '.repeat(length - str.length)}${str}`;
 }
